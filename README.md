@@ -1,6 +1,4 @@
-# Terraform Module Template
-
-This template can be used to easily start building your terraform modules.
+# Terraform Helm Release
 
 ## Workflows
 In this template there are 3 github actions workflows:
@@ -26,11 +24,36 @@ After you install all of these, you can go to the root directory of the reposito
 
 This will fix all the problems related to the hooks mentioned above.
 
-## Taking advantage of Terraform-Docs
+## Module details
 
-You will need to add the following in **README.md** in order to auto-populate the documentation with terraform-docs.
-```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
 
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.6.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [helm_release.this](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_helm"></a> [helm](#input\_helm) | name                   = string<br>chart                  = string<br>repository             = string<br>version                = string<br>repository             = string<br>namespace              = string<br>create\_namespace       = bool<br>values                 = list(string)<br>set                    = list(object({<br>    name   = string<br>    value  = string<br>    type   = string<br>}))<br>set\_sensitive          = list(object({<br>    name   = string<br>    value  = string<br>    type   = string<br>})) | `any` | n/a | yes |
+
+## Outputs
+
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-```
