@@ -1,23 +1,23 @@
 variable "helm" {
-  type        = any
-  description = <<-EOT
-    name                   = string
-    chart                  = string
-    repository             = string
-    version                = string
-    repository             = string
-    namespace              = string
-    create_namespace       = bool
-    values                 = list(string)
-    set                    = list(object({
-        name   = string
-        value  = string
-        type   = string
-    }))
-    set_sensitive          = list(object({
-        name   = string
-        value  = string
-        type   = string
-    }))
-  EOT
+  type = map(object({
+    name             = string
+    chart            = string
+    repository       = optional(string, null)
+    version          = optional(string, null)
+    namespace        = optional(string, null)
+    create_namespace = optional(bool, false)
+    values           = optional(list(string), [])
+    set = optional(list(object({
+      name  = string
+      value = string
+      type  = optional(string, "auto")
+    })), [])
+    set_sensitive = optional(list(object({
+      name  = string
+      value = string
+      type  = optional(string, "auto")
+    })), [])
+  }))
+  description = "Helm release parameters"
+  default     = {}
 }

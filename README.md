@@ -29,7 +29,10 @@ This will fix all the problems related to the hooks mentioned above.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.6.0 |
 
 ## Providers
 
@@ -51,7 +54,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_helm"></a> [helm](#input\_helm) | name                   = string<br>chart                  = string<br>repository             = string<br>version                = string<br>repository             = string<br>namespace              = string<br>create\_namespace       = bool<br>values                 = list(string)<br>set                    = list(object({<br>    name   = string<br>    value  = string<br>    type   = string<br>}))<br>set\_sensitive          = list(object({<br>    name   = string<br>    value  = string<br>    type   = string<br>})) | `any` | n/a | yes |
+| <a name="input_helm"></a> [helm](#input\_helm) | Helm release parameters | <pre>map(object({<br>    name             = string<br>    chart            = string<br>    repository       = optional(string, null)<br>    version          = optional(string, null)<br>    namespace        = optional(string, null)<br>    create_namespace = optional(bool, false)<br>    values           = optional(list(string), [])<br>    set = optional(list(object({<br>      name  = string<br>      value = string<br>      type  = optional(string, "auto")<br>    })), [])<br>    set_sensitive = optional(list(object({<br>      name  = string<br>      value = string<br>      type  = optional(string, "auto")<br>    })), [])<br>  }))</pre> | `{}` | no |
 
 ## Outputs
 
